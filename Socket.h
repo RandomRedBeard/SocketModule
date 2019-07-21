@@ -24,6 +24,8 @@
       #define DLL_PUBLIC __declspec(dllimport)
   #endif
 
+DLL_PUBLIC int printOk();
+
 class DLL_PUBLIC Socket {
 	int fd;
 	struct sockaddr_in serv;
@@ -39,7 +41,7 @@ public:
 	int shutdownSocket();
 };
 
-class DLL_PUBLIC ServerSocket {
+class ServerSocket {
 	int sock;
 	struct sockaddr_in serv;
 	unsigned int serv_len;

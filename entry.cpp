@@ -3,4 +3,5 @@
 
 int main() {
     Socket* s = new Socket();
+    printOk();
 }

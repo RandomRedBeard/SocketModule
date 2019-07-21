@@ -7,6 +7,11 @@
 
 #include "Socket.h"
 
+int printOk() {
+	printf("OK\n");
+	return 0;
+}
+
 Socket::Socket(int f) :
 		fd(f) {
 }
