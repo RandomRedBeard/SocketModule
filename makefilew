@@ -1,0 +1,18 @@
+CC = cl
+CFLAG = /EHsc /c
+INCLUES = 
+LINKS = 
+DEFINES = /DBUILDING_DLL
+
+TARGET = tsocket
+
+OBJS = *.obj
+
+all: $(TARGET)
+
+$(TARGET):
+    $(CC) $(CFLAG) *.cpp
+    $(CC) $(DEFINES) /LD Socket.cpp ServerSocket.cpp io.cpp myPoll.cpp /Fe: $(TARGET)
+
+clean:
+    del $(OBJS) *.lib *.dll *.exp *.exe
