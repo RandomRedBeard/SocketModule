@@ -4,9 +4,9 @@ INCLUES =
 LINKS = 
 DEFINES = /DBUILDING_DLL
 
-TARGET = libsocket
+OUT=".\"
 
-OUT="./"
+TARGET = $(OUT)libsocket
 
 OBJS = ServerSocket.o Socket.o io.o myPoll.o
 
@@ -22,7 +22,7 @@ myPoll.o:
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-    $(CC) /LD $(OBJS) /Fe: $(OUT)$(TARGET)
+    $(CC) /LD $(OBJS) /Fe: $(TARGET)
 	copy *.h $(OUT)\
 
 clean:
