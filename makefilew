@@ -4,7 +4,7 @@ INCLUES =
 LINKS = 
 DEFINES = /DBUILDING_DLL
 
-TARGET = tsocket
+TARGET = libsocket
 
 OBJS = *.obj
 
