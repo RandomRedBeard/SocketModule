@@ -6,7 +6,7 @@ DEFINES = /DBUILDING_DLL
 
 OUT=".\"
 
-TARGET = $(OUT)libsocket
+TARGET = $(OUT)\libsocket
 
 OBJS = ServerSocket.o Socket.o io.o myPoll.o
 
