@@ -49,7 +49,7 @@ public:
 	int shutdownSocket();
 };
 
-class ServerSocket {
+class DLL_PUBLIC ServerSocket {
 	int sock;
 	struct sockaddr_in serv;
 	unsigned int serv_len;
