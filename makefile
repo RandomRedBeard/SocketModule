@@ -8,4 +8,4 @@ OBJS = *.o
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-    $(CC) -shared -fPIC -o $(TARGET) $(OBJS)
+    $(CC) -shared -fPIC -o $(TARGET) *.cpp
