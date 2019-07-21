@@ -1,11 +1,14 @@
 CC = gcc
 CFLAG = -Wall -c
-LFLAG = -lstdc++ -std=c++15
-TARGET = libsocket.so
+LFLAG = -std=c++17 -lstdc++ -lpthread -lm
 
-OBJS = *.o
+OBJS = 
+
+TARGET = libsocket.so
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-    $(CC) -shared -fPIC -o $(TARGET) *.cpp
+	$(CC) -shared -fPIC -o $(TARGET) *.cpp
+clean:
+	rm -f $(OBJS)
