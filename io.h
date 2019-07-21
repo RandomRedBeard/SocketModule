@@ -15,27 +15,17 @@
 #include <sys/socket.h>
 #endif
 
-#if defined _WIN32
-  #ifdef BUILDING_DLL
-      #define DLL_PUBLIC __declspec(dllexport)
-  #else
-      #define DLL_PUBLIC __declspec(dllimport)
-  #endif
-#else
-#define DLL_PUBLIC
-#endif
-
 #include <stdio.h>
 #include <errno.h>
 
 #include "myPoll.h"
 
-DLL_PUBLIC int writeStream(const int, const char*, int, int);
+int writeStream(const int, const char*, int, int);
 
-DLL_PUBLIC int readStream(const int, char*, int, int);
+int readStream(const int, char*, int, int);
 
-DLL_PUBLIC int readln(const int, char*, int, int, char);
+int readln(const int, char*, int, int, char);
 
-DLL_PUBLIC int printHello();
+int printHello();
 
 #endif /* IO_H_ */

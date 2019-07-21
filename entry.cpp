@@ -1,6 +1,6 @@
-#include "io.h"
+#include "Socket.h"
 #include <stdio.h>
 
 int main() {
-    printHello();
+    Socket* s = new Socket();
 }
