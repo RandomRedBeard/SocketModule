@@ -28,17 +28,21 @@
   #define DLL_PUBLIC
 #endif
 
-DLL_PUBLIC int printOk();
-
 class DLL_PUBLIC Socket {
 	int fd;
 	struct sockaddr_in serv;
 	unsigned int serv_len;
+	int poll_wait;
+	char op_sep;
 public:
 	Socket(int);
 	Socket();
 	Socket(std::string, int);
 	~Socket();
+
+	void setPollWait(int);
+	void setOpSep(char);
+
 	int read(char*, int);
 	int write(const char*, int);
 	int closeSocket();

@@ -7,11 +7,6 @@
 
 #include "Socket.h"
 
-int printOk() {
-	printf("OK\n");
-	return 0;
-}
-
 Socket::Socket(int f) :
 		fd(f) {
 }
@@ -34,8 +29,16 @@ Socket::~Socket() {
 	closeSocket();
 }
 
+void Socket::setPollWait(int pollWait) {
+	poll_wait = pollWait;
+}
+
+void Socket::setOpSep(char opSep) {
+	op_sep = opSep;
+}
+
 int Socket::read(char* buffer, int len) {
-	return readln(fd, buffer, len,-1,'\n');
+	return readln(fd, buffer, len,poll_wait,op_sep);
 }
 
 int Socket::write(const char* buffer, int len) {
