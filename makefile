@@ -15,7 +15,7 @@ io.o:
 myPoll.o:
 	$(CC) $(CFLAG) myPoll.cpp -o myPoll.o
 
-TARGET = $(OUT)libsocket.so
+TARGET = $(OUT)/libsocket.so
 
 all: $(TARGET)
 
