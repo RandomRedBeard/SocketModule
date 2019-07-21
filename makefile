@@ -1,6 +1,6 @@
 CC = gcc
 CFLAG = -Wall -c -fPIC
-LFLAG = -std=c++17 -lstdc++ -lpthread -lm
+LFLAG = 
 
 OBJS = ServerSocket.o Socket.o io.o myPoll.o
 
