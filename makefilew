@@ -6,6 +6,8 @@ DEFINES = /DBUILDING_DLL
 
 TARGET = libsocket
 
+OUT="./"
+
 OBJS = ServerSocket.o Socket.o io.o myPoll.o
 
 ServerSocket.o:
@@ -20,7 +22,8 @@ myPoll.o:
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-    $(CC) /LD $(OBJS) /Fe: $(TARGET)
+    $(CC) /LD $(OBJS) /Fe: $(OUT)$(TARGET)
+	copy *.h $(OUT)\
 
 clean:
     del $(OBJS) *.lib *.dll *.exp *.exe
