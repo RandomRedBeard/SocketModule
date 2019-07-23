@@ -49,7 +49,7 @@ int Socket::read(char *buffer, int len)
 
 int Socket::write(const char *buffer, int len)
 {
-	return writeStream(fd, buffer, len, poll_wait_op);
+	return writeStream(fd, buffer, len, poll_wait);
 }
 
 int Socket::closeSocket()
