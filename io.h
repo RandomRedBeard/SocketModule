@@ -8,7 +8,7 @@
 #ifndef IO_H_
 #define IO_H_
 
-#ifdef _WIN32
+#if defined (_WIN32) || (_WIN64)
 #include <WinSock2.h>
 #include <Windows.h>
 #else
