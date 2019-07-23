@@ -7,52 +7,61 @@
 
 #include "Socket.h"
 
-Socket::Socket(int f) :
-		fd(f) {
+Socket::Socket(int f) : fd(f)
+{
 }
 
-Socket::Socket() {
+Socket::Socket()
+{
 	fd = -1;
 }
 
-Socket::Socket(std::string addr, int port) {
+Socket::Socket(std::string addr, int port)
+{
 	fd = socket(AF_INET, SOCK_STREAM, 0);
 	serv.sin_family = AF_INET;
 	serv.sin_addr.s_addr = inet_addr(addr.c_str());
 	serv.sin_port = htons(port);
 	serv_len = sizeof(serv);
 
-	connect(fd, (sockaddr*)&serv, serv_len);
+	connect(fd, (sockaddr *)&serv, serv_len);
 }
 
-Socket::~Socket() {
+Socket::~Socket()
+{
 	closeSocket();
 }
 
-void Socket::setPollWait(int pollWait) {
+void Socket::setPollWait(int pollWait)
+{
 	poll_wait = pollWait;
 }
 
-void Socket::setOpSep(char opSep) {
+void Socket::setOpSep(char opSep)
+{
 	op_sep = opSep;
 }
 
-int Socket::read(char* buffer, int len) {
-	return readln(fd, buffer, len,poll_wait,op_sep);
+int Socket::read(char *buffer, int len)
+{
+	return readln(fd, buffer, len, poll_wait, op_sep);
 }
 
-int Socket::write(const char* buffer, int len) {
-	return writeStream(fd, buffer, len,-1);
+int Socket::write(const char *buffer, int len)
+{
+	return writeStream(fd, buffer, len, poll_wait_op);
 }
 
-int Socket::closeSocket() {
-#if defined (_WIN32) || (_WIN64)
+int Socket::closeSocket()
+{
+#if defined(_WIN32) || (_WIN64)
 	return closesocket(fd);
 #else
 	return close(fd);
 #endif
 }
 
-int Socket::shutdownSocket() {
+int Socket::shutdownSocket()
+{
 	return shutdown(fd, 2);
 }
