@@ -18,17 +18,7 @@
 
 #include "io.h"
 
-#ifdef _WIN32
-#ifdef BUILDING_DLL
-#define DLL_PUBLIC __declspec(dllexport)
-#else
-#define DLL_PUBLIC __declspec(dllimport)
-#endif
-#else
-#define DLL_PUBLIC
-#endif
-
-class DLL_PUBLIC Socket
+class Socket
 {
 	int fd;
 	struct sockaddr_in serv;
@@ -51,7 +41,7 @@ class DLL_PUBLIC Socket
 	int shutdownSocket();
 };
 
-class DLL_PUBLIC ServerSocket
+class ServerSocket
 {
 	int sock;
 	struct sockaddr_in serv;

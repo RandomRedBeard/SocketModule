@@ -11,14 +11,15 @@
 #if defined (_WIN32) || (_WIN64)
 #include <WinSock2.h>
 #include <Windows.h>
+
+#define poll WSAPoll
+
 #else
 #include <sys/socket.h>
 #endif
 
 #include <stdio.h>
 #include <errno.h>
-
-#include "myPoll.h"
 
 int writeStream(const int, const char*, int, int);
 
