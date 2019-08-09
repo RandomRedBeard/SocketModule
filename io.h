@@ -27,6 +27,4 @@ int readStream(const int, char*, int, int);
 
 int readln(const int, char*, int, int, char);
 
-int printHello();
-
 #endif /* IO_H_ */

@@ -11,7 +11,6 @@
 #if defined(_WIN32) || (_WIN64)
 # include <WinSock2.h>
 #include <WS2tcpip.h>
-# pragma comment(lib, "Ws2_32.lib")
 #  ifdef BUILDING_DLL
 #  define DLL_PUBLIC __declspec(dllexport)
 #  else
@@ -45,6 +44,7 @@ class DLL_PUBLIC Socket
 	void setOpSep(char);
 
 	int read(char *, int);
+	int rawRead(char*, int);
 	int write(const char *, int);
 	int closeSocket();
 	int shutdownSocket();

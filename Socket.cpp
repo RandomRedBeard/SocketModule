@@ -27,7 +27,8 @@ Socket::Socket(std::string addr, int port)
 	int portLen = snprintf(nullptr,0,"%d", port);
 	char* portBuffer = (char*)malloc(portLen + 1);
 
-	snprintf(portBuffer, portLen, "%d", port);
+	// snprintf length arg includes \0 so true length
+	snprintf(portBuffer, portLen + 1, "%d", port);
 
 	struct addrinfo hints , *taddr;
 	memset(&hints, 0, sizeof(struct addrinfo));
@@ -60,6 +61,10 @@ void Socket::setOpSep(char opSep)
 int Socket::read(char *buffer, int len)
 {
 	return readln(fd, buffer, len, poll_wait, op_sep);
+}
+
+int Socket::rawRead(char* buffer, int len) {
+	return readStream(fd, buffer, len, poll_wait);
 }
 
 int Socket::write(const char *buffer, int len)

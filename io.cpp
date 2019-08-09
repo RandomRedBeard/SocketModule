@@ -63,7 +63,7 @@ int readStream(const int fd, char* buffer, int len, int POLL_WAIT_TIMEOUT) {
 		return -1;
 	}
 
-	buffer[n] = '\0';
+	*(buffer + n) = '\0';
 	return n;
 }
 
@@ -82,9 +82,3 @@ int readln(const int fd, char* buffer, int len, int POLL_WAIT_TIMEOUT, char OP_S
 	*(buffer + ntaken) = '\0';
 	return ntaken;
 }
-
-int printHello() {
-	printf("Hello\n");
-	return 0;
-}
-
