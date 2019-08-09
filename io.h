@@ -14,6 +14,7 @@
 #define poll WSAPoll
 #pragma comment(lib,"ws2_32.lib")
 #else
+#include <poll.h>
 #include <sys/socket.h>
 #endif
 
