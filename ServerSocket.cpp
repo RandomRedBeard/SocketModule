@@ -29,11 +29,7 @@ int ServerSocket::listenSocket( int n ) {
 
 Socket* ServerSocket::acceptSocket() {
 	int f;
-#if defined(_WIN32) || (_WIN64)
-	f = accept(sock, (struct sockaddr*) &serv, (int*)&serv_len);
-#else
-	f = accept(sock, (struct sockaddr*) &serv, (unsigned int*)&serv_len); 
-#endif
+	f = accept(sock, nullptr, nullptr);
 
 	if (f < 0) {
 		return (Socket*) nullptr;
