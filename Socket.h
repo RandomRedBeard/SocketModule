@@ -9,24 +9,22 @@
 #define SOCKET_H_
 
 #if defined(_WIN32) || (_WIN64)
-#include <WinSock2.h>
+# include <WinSock2.h>
+# pragma comment(lib, "Ws2_32.lib")
+#  ifdef BUILDING_DLL
+#  define DLL_PUBLIC __declspec(dllexport)
+#  else
+#  define DLL_PUBLIC __declspec(dllimport)
+#  endif
 #else
 #include <arpa/inet.h>
 #include <unistd.h>
+#define DLL_PUBLIC
 #endif
+
 #include <string>
 
 #include "io.h"
-
-#ifdef _WIN32
-#ifdef BUILDING_DLL
-#define DLL_PUBLIC __declspec(dllexport)
-#else
-#define DLL_PUBLIC __declspec(dllimport)
-#endif
-#else
-#define DLL_PUBLIC
-#endif
 
 class DLL_PUBLIC Socket
 {

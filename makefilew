@@ -8,7 +8,7 @@ OUT=".\"
 
 TARGET = $(OUT)\libsocket
 
-OBJS = ServerSocket.o Socket.o io.o myPoll.o
+OBJS = ServerSocket.o Socket.o io.o
 
 ServerSocket.o:
 	$(CC) $(CFLAG) $(DEFINES) ServerSocket.cpp /Fo: ServerSocket.o
@@ -16,8 +16,6 @@ Socket.o:
 	$(CC) $(CFLAG) $(DEFINES) Socket.cpp /Fo: Socket.o
 io.o:
 	$(CC) $(CFLAG) $(DEFINES) io.cpp /Fo: io.o
-myPoll.o:
-	$(CC) $(CFLAG) $(DEFINES) myPoll.cpp /Fo: myPoll.o
 
 all: $(TARGET)
 

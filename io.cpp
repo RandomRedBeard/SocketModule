@@ -16,7 +16,7 @@ int writeStream(const int fd, const char* buffer, int len, int POLL_WAIT_TIMEOUT
 	pollerr = POLLHUP | POLLNVAL | POLLERR;
 
 	do {
-		if (mypoll(&pfd, 1, POLL_WAIT_TIMEOUT) < 0) {
+		if (poll(&pfd, 1, POLL_WAIT_TIMEOUT) < 0) {
 			return -1;
 		}
 
@@ -49,7 +49,7 @@ int readStream(const int fd, char* buffer, int len, int POLL_WAIT_TIMEOUT) {
 
 	pollerr = POLLHUP | POLLNVAL | POLLERR;
 
-	n = mypoll(&pfd, 1, POLL_WAIT_TIMEOUT);
+	n = poll(&pfd, 1, POLL_WAIT_TIMEOUT);
 
 	if (n < 0) {
 		return -1;
