@@ -16,11 +16,7 @@ ServerSocket::ServerSocket( int port ) {
 }
 
 ServerSocket::~ServerSocket() {
-#ifdef _WIN32
-	closesocket(sock);
-#else
 	close( sock );
-#endif
 }
 
 int ServerSocket::bindSocket() {
@@ -33,7 +29,7 @@ int ServerSocket::listenSocket( int n ) {
 
 Socket* ServerSocket::acceptSocket() {
 	int f;
-#ifdef _WIN32
+#if defined(_WIN32) || (_WIN64)
 	f = accept(sock, (struct sockaddr*) &serv, (int*)&serv_len);
 #else
 	f = accept(sock, (struct sockaddr*) &serv, (unsigned int*)&serv_len); 

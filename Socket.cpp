@@ -74,11 +74,7 @@ int Socket::write(const char *buffer, int len)
 
 int Socket::closeSocket()
 {
-#if defined(_WIN32) || (_WIN64)
-	return closesocket(fd);
-#else
 	return close(fd);
-#endif
 }
 
 int Socket::shutdownSocket()

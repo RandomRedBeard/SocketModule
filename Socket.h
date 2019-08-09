@@ -9,8 +9,9 @@
 #define SOCKET_H_
 
 #if defined(_WIN32) || (_WIN64)
-# include <WinSock2.h>
+#include <WinSock2.h>
 #include <WS2tcpip.h>
+#define close closesocket
 #  ifdef BUILDING_DLL
 #  define DLL_PUBLIC __declspec(dllexport)
 #  else
