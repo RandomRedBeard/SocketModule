@@ -10,6 +10,7 @@
 
 #if defined(_WIN32) || (_WIN64)
 # include <WinSock2.h>
+#include <WS2tcpip.h>
 # pragma comment(lib, "Ws2_32.lib")
 #  ifdef BUILDING_DLL
 #  define DLL_PUBLIC __declspec(dllexport)
@@ -19,6 +20,7 @@
 #else
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <sys/socket.h>
 #define DLL_PUBLIC
 #endif
 

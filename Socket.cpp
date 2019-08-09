@@ -24,7 +24,22 @@ Socket::Socket(std::string addr, int port)
 	serv.sin_port = htons(port);
 	serv_len = sizeof(serv);
 
-	connect(fd, (sockaddr *)&serv, serv_len);
+	int portLen = snprintf(nullptr,0,"%d", port);
+	char* portBuffer = (char*)malloc(portLen + 1);
+
+	snprintf(portBuffer, portLen, "%d", port);
+
+	struct addrinfo hints , *taddr;
+	memset(&hints, 0, sizeof(struct addrinfo));
+
+	hints.ai_family = AF_INET;
+	hints.ai_socktype = SOCK_STREAM;
+
+	getaddrinfo(addr.c_str(), portBuffer, &hints, &taddr);
+
+	connect(fd, (sockaddr*)taddr->ai_addr, taddr->ai_addrlen);
+
+	free(portBuffer);
 }
 
 Socket::~Socket()
