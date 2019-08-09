@@ -1,6 +1,6 @@
 CC = cl
 CFLAG = /EHsc /c
-INCLUES = 
+INCLUDES = /I include
 LINKS = 
 DEFINES = /DBUILDING_DLL
 
@@ -8,14 +8,16 @@ OUT=".\"
 
 TARGET = $(OUT)\libsocket
 
-OBJS = ServerSocket.o Socket.o io.o
+OBJS = src\ServerSocket.o src\Socket.o src\io.o
 
-ServerSocket.o:
-	$(CC) $(CFLAG) $(DEFINES) ServerSocket.cpp /Fo: ServerSocket.o
-Socket.o:
-	$(CC) $(CFLAG) $(DEFINES) Socket.cpp /Fo: Socket.o
-io.o:
-	$(CC) $(CFLAG) $(DEFINES) io.cpp /Fo: io.o
+src\ServerSocket.o:
+	$(CC) $(CFLAG) $(INCLUDES) $(DEFINES) src\ServerSocket.cpp /Fo: src\ServerSocket.o
+
+src\Socket.o:
+	$(CC) $(CFLAG) $(INCLUDES) $(DEFINES) src\Socket.cpp /Fo: src\Socket.o
+
+src\io.o:
+	$(CC) $(CFLAG) $(INCLUDES) $(DEFINES) src\io.cpp /Fo: src\io.o
 
 all: $(TARGET)
 

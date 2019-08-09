@@ -5,7 +5,7 @@
  *      Author: thomasjansen
  */
 
-#include "Socket.h"
+#include <Socket.h>
 
 Socket::Socket(int f) : fd(f)
 {

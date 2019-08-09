@@ -5,7 +5,7 @@
  *      Author: thomasjansen
  */
 
-#include "io.h"
+#include <io.h>
 
 int writeStream(const int fd, const char* buffer, int len, int POLL_WAIT_TIMEOUT) {
 	struct pollfd pfd;
