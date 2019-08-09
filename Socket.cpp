@@ -19,10 +19,12 @@ Socket::Socket()
 Socket::Socket(std::string addr, int port)
 {
 	fd = socket(AF_INET, SOCK_STREAM, 0);
-	serv.sin_family = AF_INET;
-	serv.sin_addr.s_addr = inet_addr(addr.c_str());
-	serv.sin_port = htons(port);
-	serv_len = sizeof(serv);
+
+	// u_long iMode=1;
+
+	// int iResult = ioctlsocket(fd, FIONBIO, &iMode);
+	// if (iResult != NO_ERROR)
+	// 	printf("ioctlsocket failed with error: %ld\n", iResult);
 
 	int portLen = snprintf(nullptr,0,"%d", port);
 	char* portBuffer = (char*)malloc(portLen + 1);

@@ -47,7 +47,7 @@ int readStream(const int fd, char* buffer, int len, int POLL_WAIT_TIMEOUT) {
 
 	int n, pollerr;
 
-	pollerr = POLLHUP | POLLNVAL | POLLERR;
+	pollerr = POLLNVAL | POLLERR;
 
 	n = poll(&pfd, 1, POLL_WAIT_TIMEOUT);
 
@@ -57,6 +57,11 @@ int readStream(const int fd, char* buffer, int len, int POLL_WAIT_TIMEOUT) {
 
 	if (pfd.revents & pollerr) { //CLOSED Socket
 		return -1;
+	}
+
+	// Recieved hangup and no bytes to read
+	if (pfd.revents & POLLHUP && !(pfd.revents & POLLIN)) {
+		return 0;
 	}
 
 	if ((n = recv(fd, buffer, len, 0)) < 0) {
@@ -72,7 +77,7 @@ int readln(const int fd, char* buffer, int len, int POLL_WAIT_TIMEOUT, char OP_S
 	while (ntaken < len) {
 		n = readStream(fd, (buffer + ntaken), 1, POLL_WAIT_TIMEOUT);
 		if (n == 0)
-			return n;
+			break;
 		if (n == -1)
 			return n;
 		if (*(buffer + ntaken) == OP_SEP)

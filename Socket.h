@@ -30,8 +30,6 @@
 class DLL_PUBLIC Socket
 {
 	int fd;
-	struct sockaddr_in serv;
-	unsigned int serv_len;
 	int poll_wait;
 	char op_sep;
 
