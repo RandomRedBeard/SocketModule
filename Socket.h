@@ -23,7 +23,6 @@
 #endif
 
 #include <string>
-
 #include "io.h"
 
 class DLL_PUBLIC Socket
