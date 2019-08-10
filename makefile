@@ -1,17 +1,17 @@
 CC = gcc
 CFLAG = -Wall -c -fPIC
 LFLAG = 
-
-OBJS = ServerSocket.o Socket.o io.o
+INCLUDES = -I include
+OBJS = src/ServerSocket.o src/Socket.o src/io.o
 
 OUT=./
 
-ServerSocket.o:
-	$(CC) $(CFLAG) ServerSocket.cpp -o ServerSocket.o
-Socket.o:
-	$(CC) $(CFLAG) Socket.cpp -o Socket.o
-io.o:
-	$(CC) $(CFLAG) io.cpp -o io.o
+src/ServerSocket.o:
+	$(CC) $(CFLAG) $(INCLUDES) src/ServerSocket.cpp -o src/ServerSocket.o
+src/Socket.o:
+	$(CC) $(CFLAG) $(INCLUDES) src/Socket.cpp -o src/Socket.o
+src/io.o:
+	$(CC) $(CFLAG) $(INCLUDES) src/io.cpp -o src/io.o
 
 TARGET = $(OUT)/libsocket.so
 

@@ -20,10 +20,11 @@
 #else
 #include <arpa/inet.h>
 #include <unistd.h>
-#include <sys/socket.h>
+#include <netdb.h>
 #define DLL_PUBLIC
 #endif
 
+#include <string.h>
 #include <string>
 #include "io.h"
 
