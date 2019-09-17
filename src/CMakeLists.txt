@@ -1,0 +1,1 @@
+add_library(SOCKET SHARED io.cpp ServerSocket.cpp Socket.cpp)

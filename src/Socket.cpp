@@ -40,7 +40,9 @@ Socket::Socket(std::string addr, int port)
 
 	getaddrinfo(addr.c_str(), portBuffer, &hints, &taddr);
 
-	connect(fd, (sockaddr*)taddr->ai_addr, taddr->ai_addrlen);
+	int i = connect(fd, (sockaddr*)taddr->ai_addr, taddr->ai_addrlen);
+
+	printf("%d\n", i);
 
 	free(portBuffer);
 }
