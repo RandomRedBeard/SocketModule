@@ -11,22 +11,26 @@
 #if defined(_WIN32) || (_WIN64)
 #include <WinSock2.h>
 #include <WS2tcpip.h>
+#define poll WSAPoll
 #define close closesocket
+#pragma comment(lib,"ws2_32.lib")
 #  ifdef BUILDING_DLL
 #  define DLL_PUBLIC __declspec(dllexport)
 #  else
 #  define DLL_PUBLIC __declspec(dllimport)
 #  endif
 #else
+#include <poll.h>
+#include <sys/socket.h>
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <netdb.h>
 #define DLL_PUBLIC
 #endif
 
+#include <stdio.h>
+#include <errno.h>
 #include <string.h>
-#include <string>
-#include "io.h"
 
 class DLL_PUBLIC Socket
 {
@@ -37,14 +41,14 @@ class DLL_PUBLIC Socket
   public:
 	Socket(int);
 	Socket();
-	Socket(std::string, int);
+	Socket(const char*, const char*);
 	~Socket();
 
 	void setPollWait(int);
 	void setOpSep(char);
 
 	int read(char *, int);
-	int rawRead(char*, int);
+	int readln(char*, int);
 	int write(const char *, int);
 	int closeSocket();
 	int shutdownSocket();

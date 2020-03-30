@@ -6,7 +6,7 @@ int main() {
 	WSAStartup(MAKEWORD(2, 2), &wsa);
 #endif
 
-    Socket s("chaim-in.com", 80);
+    Socket s((const char*)"chaim-in.com", "80");
 
 	const char* get = "GET /\r\n";
 	s.write(get, strlen(get));
